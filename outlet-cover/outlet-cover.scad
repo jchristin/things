@@ -13,8 +13,15 @@ module pin() {
 }
 
 difference() {
-	translate([0,0,COVER_RADIUS]) sphere(COVER_RADIUS);
+	translate([0,0,COVER_RADIUS - 1]) sphere(COVER_RADIUS);
+
+	// Top clipping
 	translate([0,0,50 + COVER_THICKNESS]) cube(100, center = true);
+
+	// Bottom clipping
+	translate([0,0,-50]) cube(100, center = true);
+
+	// Side clipping
 	translate([0,50 + COVER_LENGTH / 2,0]) cube(100, center = true);
 	translate([0, -50 - COVER_LENGTH / 2,0]) cube(100, center = true);
 	translate([50 + COVER_WIDTH / 2,0,0]) cube(100, center = true);
